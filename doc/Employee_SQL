@@ -1,0 +1,19 @@
+create table EMPLOYEE
+(
+  ID int auto_increment comment 'ID(流水號)' primary key,
+  EMP_CODE varchar(10) not null comment '員工代號',
+  EMP_NAME varchar(10) not null comment '員工中文姓名',
+  EMP_ENG_NAME int not null comment '員工英文姓名',
+  EMP_STAUS int null comment '員工狀態 (I：在職、T：試用期、L：離職)',
+  constraint EMPLOYEE_EMP_CODE_uindex
+  unique (EMP_CODE)
+)
+  comment '員工資料表' engine=InnoDB charset=utf8mb4
+;
+
+create index EMPLOYEE_EMP_CODE_index
+  on TP_EMP_PROFILE (EMP_CODE)
+;
+create index EMPLOYEE_EMP_NAME_index
+  on TP_EMP_PROFILE (EMP_NAME)
+;
